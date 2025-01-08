@@ -1,0 +1,77 @@
+/* Landing Page Styling */
+html {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #a26b72; /* Match the exact background color */
+    font-family: "Lato", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Container for the rectangle */
+  .home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Rectangle styling */
+  .home-rectangle {
+    width: 342px;
+    height: 528px;
+    background: rgba(217, 217, 217, 0.5); /* Slight transparency */
+    border-radius: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 60px; /* Add space at the top */
+  }
+  
+  /* Ellipse */
+  .home-ellipse {
+    width: 123px;
+    height: 123px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    margin-bottom: 30px;
+  }
+  
+  /* Frame for buttons */
+  .home-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Space between buttons */
+    margin-top: 50px; /* Space between ellipse and buttons */
+  }
+  
+  /* Buttons */
+  .home-button {
+    width: 203px;
+    height: 39px;
+    background: rgba(211, 206, 206, 0.28); /* Slight transparency */
+    border: none;
+    border-radius: 58px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .home-button:hover {
+    background: rgba(211, 206, 206, 0.5); /* Slightly darker on hover */
+  }
+  

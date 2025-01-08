@@ -1,12 +1,27 @@
+import React from "react";
+import "./Landing.css"; 
+
 const Landing = () => {
   return (
-    <main>
-      <h1>Hello, you are on the landing page for visitors.</h1>
-      <h3>
-        If you sign up for a new account, you will have the ability to sign in
-        and see your super secret dashboard.
-      </h3>
-    </main>
+    <div className="home-container">
+      <div className="home-rectangle">
+        <div className="home-ellipse"></div>
+        <div className="home-frame">
+          <button
+            className="home-button"
+            onClick={() => (window.location.href = "/login")}
+          >
+            Log In
+          </button>
+          <button
+            className="home-button"
+            onClick={() => (window.location.href = "/signup")}
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
