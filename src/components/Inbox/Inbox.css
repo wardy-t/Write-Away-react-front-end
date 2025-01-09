@@ -1,0 +1,144 @@
+/* Inbox Page Styling */
+body {
+    background-color: #a26b72;
+    font-family: "Lato", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+  }
+  
+  .inbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /* Left Sidebar */
+  .left-rectangle {
+    position: absolute;
+    width: 342px;
+    height: calc(100% - 44px);
+    top: 22px;
+    left: 26px;
+    background: rgba(217, 217, 217, 0.5);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    gap: 20px;
+  }
+  
+  /* Sidebar Ellipse */
+  .sidebar-ellipse {
+    width: 123px;
+    height: 123px;
+    background: #d9d9d9;
+    border-radius: 50%;
+  }
+  
+  /* Buttons */
+  .compose-button {
+    width: 180px;
+    height: 74px;
+    background: #ffffff;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #a26b72;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menu-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .menu-button {
+    width: 203px;
+    height: 39px;
+    background: rgba(217, 217, 217, 0.78);
+    border-radius: 58px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menu-button.active {
+    background: rgba(211, 206, 206, 0.28);
+    border: 3px solid #ffffff;
+  }
+  
+  /* Top Ellipse */
+  .top-ellipse {
+    position: absolute;
+    width: 67px;
+    height: 67px;
+    top: 27px;
+    left: 1187px;
+    background: #d9d9d9;
+    border-radius: 50%;
+  }
+  
+  /* Settings Icon */
+  .settings-icon {
+    position: absolute;
+    top: 48px;
+    left: 1150px;
+    width: 23px;
+    height: 24px;
+  }
+  
+  /* Header Rectangle */
+  .header-rectangle {
+    position: absolute;
+    width: 686px;
+    height: 77px;
+    top: 22px;
+    left: 393px;
+    background: rgba(217, 217, 217, 0.3);
+    border-radius: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .search-text {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: left;
+    text-decoration: none;
+  }
+  
