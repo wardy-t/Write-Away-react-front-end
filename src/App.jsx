@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
 import Inbox from './components/Inbox/Inbox';
+import Email from './components/Email/Email'; // Import the Email component
+import Reply from './components/Reply/Reply';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; // import the authservice
@@ -23,7 +25,13 @@ const App = () => {
         <NavBar user={user} handleSignout={handleSignout} />
         <Routes>
           {user ? (
-            <Route path="/" element={<Inbox user={user} />} />
+            <>
+              {/* Route for Inbox */}
+              <Route path="/" element={<Inbox user={user} />} />
+              {/* Route for Email */}
+              <Route path="/email" element={<Email />} />
+              <Route path="/reply" element={<Reply />} />
+            </>
           ) : (
             <Route path="/" element={<Landing />} />
           )}

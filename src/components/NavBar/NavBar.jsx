@@ -13,6 +13,9 @@ const NavBar = ({ handleSignout }) => {
               <Link to="/">Inbox</Link>
             </li>
             <li>
+              <Link to="/email">New</Link>
+            </li>
+            <li>
               <Link to="/drafts">Drafts</Link>
             </li>
             <li>
