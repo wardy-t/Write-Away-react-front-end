@@ -1,29 +1,13 @@
 import { AuthedUserContext } from '../../App';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './inbox.css';
+import './EmailContainer.css';
 
-const Inbox = () => {
+const EmailContainer = (props) => {
   const user = useContext(AuthedUserContext);
   const navigate = useNavigate(); // Initialize navigate
 
-  // Mock email data
-  const [emails, setEmails] = useState([
-    {
-      id: 1,
-      sender: 'teacher@example.com',
-      subject: 'Assignment Reminder',
-      body: 'Don’t forget to submit your assignment by Friday!',
-      isReplied: false,
-    },
-    {
-      id: 2,
-      sender: 'admin@example.com',
-      subject: 'Welcome to the Portal',
-      body: 'We are excited to have you onboard!',
-      isReplied: true,
-    },
-  ]);
+
 
   const handleReply = (email) => {
     // Navigate to Reply component and pass email details via state
@@ -40,7 +24,7 @@ const Inbox = () => {
       <section>
         <h2>Your Inbox</h2>
         <div className="inbox-container">
-          {emails.map((email) => (
+          {props.emails.map((email) => (
             <div key={email.id} className="email">
               <h3>{email.subject}</h3>
               <p>
@@ -59,4 +43,4 @@ const Inbox = () => {
   );
 };
 
-export default Inbox;
+export default EmailContainer;
