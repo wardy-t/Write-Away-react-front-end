@@ -1,5 +1,6 @@
 import { AuthedUserContext } from '../../App';
 import { useContext, useState } from 'react';
+import './inbox.css';
 
 const Inbox = () => {
   const user = useContext(AuthedUserContext);

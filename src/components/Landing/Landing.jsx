@@ -1,3 +1,5 @@
+import './Landing.css';
+
 const Landing = () => {
   return (
     <main>
