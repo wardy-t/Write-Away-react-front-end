@@ -1,5 +1,6 @@
 import { useState, createContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
 import Inbox from './components/Inbox/Inbox';
@@ -11,6 +12,8 @@ export const AuthedUserContext = createContext(null);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+
+  console.log('Initial user from authService:', user); // Debugging log
 
   const handleSignout = () => {
     authService.signout();

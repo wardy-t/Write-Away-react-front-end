@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import * as authService from '../../services/authService';
-import './SigninForm.css';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import * as authService from "../../services/authService";
+import "./SigninForm.css"; // Import your custom CSS
 
 const SigninForm = (props) => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState(['']);
+  const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const updateMessage = (msg) => {
@@ -16,7 +16,7 @@ const SigninForm = (props) => {
   };
 
   const handleChange = (e) => {
-    updateMessage('');
+    updateMessage("");
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -24,49 +24,60 @@ const SigninForm = (props) => {
     e.preventDefault();
     try {
       const user = await authService.signin(formData);
-      console.log(user);
       props.setUser(user);
-      navigate('/');
+      navigate("/inbox"); // Redirect to dashboard (Inbox page)
     } catch (err) {
       updateMessage(err.message);
     }
   };
 
   return (
-    <main>
-      <h1>Log In</h1>
-      <p>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Username:</label>
+    <div className="login-container">
+      <div className="login-rectangle">
+        <div className="login-ellipse"></div>
+        <form className="login-form" autoComplete="off" onSubmit={handleSubmit}>
+          <h1 className="login-title">Log In</h1>
+          <p className="login-message">{message}</p>
+
+          <label htmlFor="username" className="form-label">
+            Username
+          </label>
           <input
             type="text"
-            autoComplete="off"
             id="username"
-            value={formData.username}
             name="username"
+            className="form-input"
+            placeholder="Enter username"
+            value={formData.username}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
             type="password"
-            autoComplete="off"
             id="password"
-            value={formData.password}
             name="password"
+            className="form-input"
+            placeholder="Enter password"
+            value={formData.password}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <button>Log In</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
-        </div>
-      </form>
-    </main>
+
+          <div className="form-buttons">
+            <button type="submit" className="login-button">
+              Log In
+            </button>
+            <Link to="/">
+              <button type="button" className="cancel-button">
+                Cancel
+              </button>
+            </Link>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

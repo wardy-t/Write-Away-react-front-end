@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { AuthedUserContext } from '../../App';
 import { useContext } from 'react';
+import './NavBar.css'; // Import CSS for the NavBar
 
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
+
   return (
     <>
       {user ? (
@@ -26,18 +28,10 @@ const NavBar = ({ handleSignout }) => {
           </ul>
         </nav>
       ) : (
-        <nav>
-          <ul>
-            <li>
-              <Link to="/signin">Sign In</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-          </ul>
-        </nav>
+        <nav></nav> // Empty nav for unauthenticated users
       )}
     </>
   );
 };
+
 export default NavBar;
