@@ -1,20 +1,89 @@
-/* Inbox Page Styling */
 /* Main Rectangle */
 .main-rectangle {
     position: absolute;
     width: 861px;
-    height: calc(100vh - 124px - 20px);
+    height: calc(100vh - 144px);
     top: 124px;
     left: 393px;
     background-color: rgba(217, 217, 217, 0.7); /* #D9D9D9B2 */
     border-radius: 30px;
     padding: 20px;
-    overflow-y: auto; /* Enable scrolling */
+    overflow-y: auto;
     box-sizing: border-box;
-    color: #ffffff; /* Change text color to white */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
   }
   
-  /* Ellipse at Top-Right */
+  /* Email Content Rectangle */
+  .email-content-rectangle {
+    width: 807px;
+    height: 539px;
+    background-color: rgba(217, 217, 217, 0.7);
+    border-radius: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Reply Container Styling */
+  .reply-container .email {
+    background: #d9d9d9c7; /* Adjusted hover background */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    color: #000000; /* Reverted text color to black */
+  }
+  
+  .reply-container .email:hover {
+    background-color: #cfcfcf;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .reply-container .email h3 {
+    font-size: 18px;
+    color: #000000; /* Reverted text color to black */
+  }
+  
+  .reply-container .email p {
+    font-size: 14px;
+    color: #000000; /* Reverted text color to black */
+  }
+  
+  /* Buttons */
+  .email-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .reply-button {
+    width: 120px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a26b72;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .reply-button:hover {
+    background-color: #f0f0f0;
+    color: #8a4f58;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Top Ellipse */
   .top-ellipse {
     position: absolute;
     width: 67px;
@@ -45,9 +114,7 @@
     border-radius: 70px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     padding-left: 20px;
-    color: #ffffff; /* Change text color to white */
   }
   
   .search-container {
@@ -65,44 +132,12 @@
     font-family: "Inter", sans-serif;
     font-size: 18px;
     font-weight: 400;
-    color: #ffffff; /* White text for search */
-    text-align: left;
-    text-decoration: none;
+    color: #ffffff; /* White text */
   }
   
-  /* Email Styling */
-  .email {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #ffffff; /* Change text color to white */
+  /* Welcome Text */
+  h1,
+  p {
+    color: #000000; /* Reverted to black text */
   }
   
-  .email h3 {
-    margin: 0 0 5px;
-    font-size: 18px;
-    color: #ffffff; /* White text for email subject */
-  }
-  
-  .email p {
-    margin: 0 0 10px;
-    font-size: 14px;
-    color: #ffffff; /* White text for email body */
-  }
-  
-  button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }

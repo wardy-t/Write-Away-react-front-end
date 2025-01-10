@@ -1,55 +1,77 @@
 import { AuthedUserContext } from '../../App';
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ReplyContainer.css';
 
 const ReplyContainer = (props) => {
   const user = useContext(AuthedUserContext);
-  const navigate = useNavigate(); // Initialize navigate
-
+  const navigate = useNavigate();
 
   const handleReply = (email) => {
-    // Navigate to Reply component and pass email details via state
     navigate('/reply', { state: { email } });
   };
 
   return (
-    <main>
-      <h1>Welcome, {user.username}</h1>
-      <p>
-        This is your Inbox. Here you can practice writing, sending, and receiving email messages!
-      </p>
+    <div className="reply-page">
+      {/* Top Ellipse */}
+      <div className="top-ellipse"></div>
 
-      <section>
-        <h2>Your Inbox</h2>
-        <div className="inbox-container">
-          {props.replies.map((reply) => (
-            <>{
-              props.myJob === reply.currentFolder
-              
-              ? 
-            
-              <div key={reply.id} className="email">
-              <h3>{reply.subject}</h3>
-              <p>
-                <strong>From:</strong> {reply.sender}
-              </p>
-              <p>{reply.body}</p>
-              {!reply.isReplied && (
-                <button onClick={() => handleReply(reply)}>Reply</button>
-              )}
-              {reply.isReplied && <p><em>Replied</em></p>}
-            </div>
-            
-            :
-            
-            null
-            
-            }</>
-          ))}
+      {/* Settings Icon */}
+      <img
+        src="src/components/img/settings.png"
+        alt="Settings Icon"
+        className="settings-icon"
+      />
+
+      {/* Header Rectangle */}
+      <div className="header-rectangle">
+        <div className="search-container">
+          <img
+            src="src/components/img/search.png"
+            alt="Search Icon"
+            className="search-icon"
+          />
+          <span className="search-text">
+            {props.myJob === 'drafts' ? 'Search drafts' : 'Search sent emails'}
+          </span>
         </div>
-      </section>
-    </main>
+      </div>
+
+      {/* Main Rectangle */}
+      <div className="main-rectangle">
+        <h1>Welcome, {user.username}</h1>
+        <p>
+          {props.myJob === 'drafts'
+            ? 'Here are your saved drafts.'
+            : 'Here are your sent emails.'}
+        </p>
+
+        <section>
+          <h2>
+            {props.myJob === 'drafts' ? 'Drafts' : 'Sent Emails'}
+          </h2>
+          <div className="reply-container">
+            {props.replies.map((reply) => (
+              <>
+                {props.myJob === reply.currentFolder ? (
+                  <div key={reply.id} className="email">
+                    <h3>{reply.subject}</h3>
+                    <p>
+                      <strong>From:</strong> {reply.sender}
+                    </p>
+                    <p>{reply.body}</p>
+                    {!reply.isReplied && (
+                      <button onClick={() => handleReply(reply)}>Reply</button>
+                    )}
+                    {reply.isReplied && <p><em>Replied</em></p>}
+                  </div>
+                ) : null}
+              </>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
   );
 };
 
