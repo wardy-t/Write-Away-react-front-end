@@ -22,7 +22,7 @@ const NavBar = ({ handleSignout }) => {
             <div className="sidebar-ellipse"></div>
             
             {/* Compose Button */}
-            <Link to="/compose" className="compose-button">
+            <Link to="/email" className="compose-button">
               Compose
             </Link>
   
