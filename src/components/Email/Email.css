@@ -1,0 +1,145 @@
+/* Main Rectangle */
+.main-rectangle {
+    position: absolute;
+    width: 861px;
+    height: calc(100vh - 144px);
+    top: 124px;
+    left: 393px;
+    background-color: rgba(217, 217, 217, 0.7); /* Transparent gray */
+    border-radius: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Email Content Rectangle */
+  .email-content-rectangle {
+    width: 807px;
+    height: 539px;
+    background-color: rgba(217, 217, 217, 0.7);
+    border-radius: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Form Styling */
+  .email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .email-label {
+    font-size: 14px;
+    color: #ffffff; /* White text */
+  }
+  
+  .email-input,
+  .email-textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(211, 206, 206, 0.28); /* Transparent background */
+    font-size: 14px;
+    color: #ffffff;
+    outline: none;
+  }
+  
+  .email-input::placeholder,
+  .email-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .email-textarea {
+    height: 150px;
+    resize: vertical;
+  }
+  
+  /* Buttons */
+  .email-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .save-to-drafts-button,
+  .send-button {
+    width: 120px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a26b72;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .save-to-drafts-button:hover,
+  .send-button:hover {
+    background-color: #f0f0f0;
+    color: #8a4f58;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Top Ellipse */
+  .top-ellipse {
+    position: absolute;
+    width: 67px;
+    height: 67px;
+    top: 27px;
+    left: 1187px;
+    background: #d9d9d9;
+    border-radius: 50%;
+  }
+  
+  /* Settings Icon */
+  .settings-icon {
+    position: absolute;
+    top: 48px;
+    left: 1150px;
+    width: 23px;
+    height: 24px;
+  }
+  
+  /* Header Rectangle */
+  .header-rectangle {
+    position: absolute;
+    width: 686px;
+    height: 77px;
+    top: 22px;
+    left: 393px;
+    background: rgba(217, 217, 217, 0.3);
+    border-radius: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .search-text {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  

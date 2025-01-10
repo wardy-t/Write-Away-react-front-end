@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import NavBar from '../NavBar/NavBar'; // Import NavBar
+import './email.css'; // Import email-specific styles
 
-const Email = () => {
+const Email = ({ handleSignout }) => {
   const [emailDetails, setEmailDetails] = useState({
     to: '',
     from: '',
@@ -16,76 +18,120 @@ const Email = () => {
     }));
   };
 
-
   const handleSend = () => {
     console.log('Sending email with details:', emailDetails);
-    // You can add your send email logic here (e.g., API call)
     alert('Email sent!');
+    // Add email sending logic here
   };
 
   const handleSave = () => {
     console.log('Saving email draft:', emailDetails);
-    // You can add your save logic here (e.g., saving the draft locally or in a database)
+    const drafts = JSON.parse(localStorage.getItem('drafts')) || [];
+    drafts.push(emailDetails);
+    localStorage.setItem('drafts', JSON.stringify(drafts));
     alert('Email draft saved!');
   };
 
   return (
-    <div className="email-container">
-      <h2>Write a New Message</h2>
-      <form>
-        <div className="form-group">
-          <label htmlFor="to">To:</label>
-          <input
-            type="email"
-            id="to"
-            name="to"
-            value={emailDetails.to}
-            onChange={handleChange}
-            placeholder="Recipient's email"
-            required
+    <div className="email-page">
+      {/* NavBar */}
+      <NavBar handleSignout={handleSignout} />
+
+      {/* Top Ellipse */}
+      <div className="top-ellipse"></div>
+
+      {/* Settings Icon */}
+      <img
+        src="src/components/img/settings.png"
+        alt="Settings Icon"
+        className="settings-icon"
+      />
+
+      {/* Header Rectangle */}
+      <div className="header-rectangle">
+        <div className="search-container">
+          <img
+            src="src/components/img/search.png"
+            alt="Search Icon"
+            className="search-icon"
           />
+          <span className="search-text">Compose Email</span>
         </div>
-        <div className="form-group">
-          <label htmlFor="from">From:</label>
-          <input
-            type="email"
-            id="from"
-            name="from"
-            value={emailDetails.from}
-            onChange={handleChange}
-            placeholder="Your email"
-            required
-          />
+      </div>
+
+      {/* Main Email Area */}
+      <div className="main-rectangle">
+        <div className="email-content-rectangle">
+          <form className="email-form">
+            <label className="email-label">
+              <strong>To:</strong>
+              <input
+                type="email"
+                className="email-input"
+                id="to"
+                name="to"
+                value={emailDetails.to}
+                onChange={handleChange}
+                placeholder="Recipient's email"
+                required
+              />
+            </label>
+            <label className="email-label">
+              <strong>From:</strong>
+              <input
+                type="email"
+                className="email-input"
+                id="from"
+                name="from"
+                value={emailDetails.from}
+                onChange={handleChange}
+                placeholder="Your email"
+                required
+              />
+            </label>
+            <label className="email-label">
+              <strong>Subject:</strong>
+              <input
+                type="text"
+                className="email-input"
+                id="subject"
+                name="subject"
+                value={emailDetails.subject}
+                onChange={handleChange}
+                placeholder="Email subject"
+                required
+              />
+            </label>
+            <label className="email-label">
+              <strong>Message:</strong>
+              <textarea
+                className="email-textarea"
+                id="message"
+                name="message"
+                value={emailDetails.message}
+                onChange={handleChange}
+                placeholder="Write your message here"
+                rows="6"
+                required
+              ></textarea>
+            </label>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="subject">Subject:</label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={emailDetails.subject}
-            onChange={handleChange}
-            placeholder="Email subject"
-            required
-          />
+
+        {/* Buttons */}
+        <div className="email-buttons">
+          <button
+            type="button"
+            className="save-to-drafts-button"
+            onClick={handleSave}
+          >
+            Save to Drafts
+          </button>
+          <button type="button" className="send-button" onClick={handleSend}>
+            Send
+          </button>
         </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={emailDetails.message}
-            onChange={handleChange}
-            placeholder="Write your message here"
-            rows="6"
-            required
-          ></textarea>
-        </div>
-        <div className="form-buttons">
-          <button type="button" onClick={handleSend}>Send</button>
-          <button type="button" onClick={handleSave}>Save</button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };
