@@ -1,0 +1,84 @@
+
+/* Left Sidebar */
+.left-rectangle {
+    position: absolute; /* Position within the parent container */
+    width: 300px; /* Adjusted width to fit smaller screens */
+    height: calc(100% - 60px); /* Adjusted height for better responsiveness */
+    top: 30px; /* Increased top padding */
+    left: 20px; /* Reduced left padding */
+    background: rgba(217, 217, 217, 0.5);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* Reduced padding for more space */
+    gap: 20px;
+    box-sizing: border-box; /* Ensures padding doesn't increase dimensions */
+    overflow: hidden; /* Prevents content from spilling out */
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .left-rectangle {
+        width: 100%; /* Full width for smaller screens */
+        height: auto; /* Adjust height dynamically */
+        top: 10px; /* Reduce top margin */
+        left: 10px; /* Reduce left margin */
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+
+/* Sidebar Ellipse */
+.sidebar-ellipse {
+    width: 123px;
+    height: 123px;
+    background: #d9d9d9;
+    border-radius: 50%;
+}
+
+/* Buttons */
+.compose-button {
+    width: 180px;
+    height: 74px;
+    background: #ffffff;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #a26b72;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Remove underline for links */
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.menu-button {
+    width: 203px;
+    height: 39px;
+    background: rgba(217, 217, 217, 0.78);
+    border-radius: 58px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Remove underline for links */
+}
+
+.menu-button.active {
+    background: rgba(211, 206, 206, 0.28);
+    border: 3px solid #ffffff;
+}
