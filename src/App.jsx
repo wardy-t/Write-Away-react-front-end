@@ -5,8 +5,10 @@ import Landing from './components/Landing/Landing';
 import Inbox from './components/Inbox/Inbox';
 import Reply from './components/Reply/Reply';
 import Drafts from './components/Drafts/Drafts';
+import Compose from './components/Compose/Compose';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
+
 import * as authService from '../src/services/authService'; // Import the auth service
 
 export const AuthedUserContext = createContext(null);
@@ -35,6 +37,7 @@ const App = () => {
             <Route path="/inbox" element={<Inbox handleSignout={handleSignout} />} />
             <Route path="/reply" element={<Reply />} />
             <Route path="/drafts" element={<Drafts handleSignout={handleSignout} />} />
+            <Route path="/compose" element={<Compose handleSignout={handleSignout} />} />
           </>
         ) : (
           // Redirect to signin if user is not authenticated
