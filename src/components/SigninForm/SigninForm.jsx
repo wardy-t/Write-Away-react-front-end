@@ -33,41 +33,53 @@ const SigninForm = (props) => {
   };
 
   return (
-    <main>
-      <h1>Log In</h1>
-      <p>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Username:</label>
-          <input
-            type="text"
-            autoComplete="off"
-            id="username"
-            value={formData.username}
-            name="username"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+
+<div className="login-container">
+<div className="login-rectangle">
+  <div className="login-ellipse"></div>
+  <form className="login-form" autoComplete="off" onSubmit={handleSubmit}>
+    <h1 className="login-title">Log In</h1>
+    <p className="login-message">{message}</p>
+
+    <label htmlFor="username" className="form-label">
+      Username
+    </label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      className="form-input"
+      placeholder="Enter username"
+      value={formData.username}
+      onChange={handleChange}
+    />
+    <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
             type="password"
-            autoComplete="off"
             id="password"
-            value={formData.password}
             name="password"
+            className="form-input"
+            placeholder="Enter password"
+            value={formData.password}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <button>Log In</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
-        </div>
-      </form>
-    </main>
+          <div className="form-buttons">
+            <button type="submit" className="login-button">
+              Log In
+            </button>
+            <Link to="/">
+              <button type="button" className="cancel-button">
+                Cancel
+              </button>
+            </Link>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
+
 
 export default SigninForm;
