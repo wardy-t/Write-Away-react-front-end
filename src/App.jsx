@@ -1,8 +1,10 @@
 import { useState, createContext } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Landing from './components/Landing/Landing';
 import Inbox from './components/Inbox/Inbox';
+import Reply from './components/Reply/Reply';
+import Drafts from './components/Drafts/Drafts';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; // Import the auth service
@@ -27,11 +29,17 @@ const App = () => {
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
 
-        {/* Protected route for Inbox */}
-        {user && <Route path="/inbox" element={<Inbox handleSignout={handleSignout} />} />}
-
-        {/* Fallback route */}
-        {!user && <Route path="/inbox" element={<SigninForm setUser={setUser} />} />}
+        {/* Protected routes */}
+        {user ? (
+          <>
+            <Route path="/inbox" element={<Inbox handleSignout={handleSignout} />} />
+            <Route path="/reply" element={<Reply />} />
+            <Route path="/drafts" element={<Drafts handleSignout={handleSignout} />} />
+          </>
+        ) : (
+          // Redirect to signin if user is not authenticated
+          <Route path="*" element={<Navigate to="/signin" />} />
+        )}
       </Routes>
     </AuthedUserContext.Provider>
   );

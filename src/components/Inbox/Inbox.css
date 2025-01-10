@@ -2,7 +2,7 @@
 .main-rectangle {
   position: absolute;
   width: 861px;
-  height: calc(100vh - 124px - 20px);
+  height: calc(100vh - 144px); /* Adjusted height calculation */
   top: 124px;
   left: 393px;
   background-color: rgba(217, 217, 217, 0.7); /* #D9D9D9B2 */
@@ -10,6 +10,27 @@
   padding: 20px;
   overflow-y: auto; /* Enable scrolling */
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Adds spacing between elements inside */
+}
+
+.email-content-rectangle {
+  width: 807px;
+  height: 539px;
+  background-color: rgba(217, 217, 217, 0.7); /* #D9D9D9 */
+  border-radius: 30px; /* Custom border radius */
+  border: 1px solid #d9d9d9; /* Top border */
+  opacity: 1; /* Ensure it's visible */
+  color: #ffffff; /* Text color set to white */
+  padding: 20px; /* Add some padding for the content */
+  box-sizing: border-box;
+  overflow-y: auto; /* Allow scrolling for long content */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: flex-start; /* Align text to the left */
+  margin: 0 auto; /* Center within the main rectangle */
 }
 
 /* Ellipse at Top-Right */
@@ -18,7 +39,7 @@
   width: 67px;
   height: 67px;
   top: 27px;
-  left: 1187px;
+  left: 1187px; /* Restored original left positioning */
   background: #d9d9d9;
   border-radius: 50%;
 }
@@ -27,7 +48,7 @@
 .settings-icon {
   position: absolute;
   top: 48px;
-  left: 1150px;
+  left: 1150px; /* Restored original left positioning */
   width: 23px;
   height: 24px;
 }
@@ -69,35 +90,72 @@
 
 /* Email Styling */
 .email {
-  background: #ffffff;
+  background: rgba(217, 217, 217, 0.60); /* Updated background with 78% opacity */
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* Change cursor to indicate clickability */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  color: #ffffff; /* Ensures text is white */
+}
+
+.email:hover {
+  background-color: rgba(217, 217, 217, 0.9); /* Slightly darker background to indicate hover */
+  transform: scale(1.02); /* Slight zoom effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for emphasis */
 }
 
 .email h3 {
   margin: 0 0 5px;
   font-size: 18px;
-  color: #333;
+  color: #ffffff; /* Ensures text is white */
 }
 
 .email p {
   margin: 0 0 10px;
   font-size: 14px;
+  color: #ffffff; /* Ensures text is white */
 }
 
-button {
-  background-color: #4caf50;
-  color: white;
+
+/* Reply and Back to Inbox Buttons */
+.reply-button {
+  width: 120px; /* Smaller width */
+  height: 40px; /* Reduced height */
+  background: #ffffff;
+  border-radius: 10px; /* Smaller border radius */
+  font-size: 12px; /* Smaller font size */
+  font-weight: bold;
+  color: #a26b72;
   border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
   cursor: pointer;
-  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px; /* Reduced padding */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-button:hover {
-  background-color: #45a049;
+.reply-button:hover {
+  background-color: #f0f0f0;
+  color: #8a4f58;
+  transform: scale(1.05); /* Slight scale-up effect on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover shadow effect */
+}
+
+/* Selected Email */
+.selected-email {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Email Buttons Container */
+.email-buttons {
+  display: flex;
+  gap: 20px; /* Space between buttons */
+  justify-content: center; /* Center buttons horizontally */
+  margin-top: 20px; /* Space between content and buttons */
 }

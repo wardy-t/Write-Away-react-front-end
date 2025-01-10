@@ -1,0 +1,73 @@
+/* Form Labels */
+.reply-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff; /* White text for labels */
+  }
+  
+  /* Form Inputs */
+  .reply-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px; /* Rounded edges */
+    background: rgba(211, 206, 206, 0.28); /* Transparent background */
+    font-size: 14px;
+    color: #ffffff; /* White text for the input */
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  .reply-input::placeholder {
+    color: rgba(255, 255, 255, 0.4); /* Lighter white for placeholder */
+  }
+  
+  /* Textarea */
+  .reply-textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px; /* Rounded edges */
+    background: rgba(211, 206, 206, 0.28); /* Transparent background */
+    font-size: 14px;
+    color: #ffffff; /* White text for the textarea */
+    outline: none;
+    resize: vertical; /* Allow vertical resizing */
+    box-sizing: border-box;
+  }
+  
+  .reply-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4); /* Lighter white for placeholder */
+  }
+  
+  /* Reply Buttons */
+  .reply-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .reply-button {
+    width: 120px; /* Smaller width */
+    height: 40px; /* Reduced height */
+    background: #ffffff;
+    border-radius: 10px; /* Smaller border radius */
+    font-size: 12px; /* Smaller font size */
+    font-weight: bold;
+    color: #a26b72;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px; /* Reduced padding */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .reply-button:hover {
+    background-color: #f0f0f0;
+    color: #8a4f58;
+    transform: scale(1.05); /* Slight scale-up effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover shadow effect */
+  }
+  

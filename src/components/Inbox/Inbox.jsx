@@ -1,10 +1,12 @@
 import { AuthedUserContext } from '../../App';
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import NavBar from '../NavBar/NavBar'; // Import the NavBar component
 import './inbox.css';
 
 const Inbox = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
+  const navigate = useNavigate(); // Initialize navigate
 
   // Mock email data
   const [emails, setEmails] = useState([
@@ -24,30 +26,45 @@ const Inbox = ({ handleSignout }) => {
     },
   ]);
 
-  const handleReply = (emailId) => {
-    setEmails((prevEmails) =>
-      prevEmails.map((email) =>
-        email.id === emailId ? { ...email, isReplied: true } : email
-      )
-    );
-    alert('Reply sent!');
+  // Track the selected email
+  const [selectedEmail, setSelectedEmail] = useState(null);
+
+  // Handle clicking an email
+  const handleEmailClick = (email) => {
+    setSelectedEmail(email);
+  };
+
+  // Handle reply
+  const handleReply = () => {
+    if (selectedEmail) {
+      navigate('/reply', { state: { email: selectedEmail } }); // Navigate to Reply.jsx with selected email data
+    }
+  };
+
+  // Handle back to inbox
+  const handleBackToInbox = () => {
+    setSelectedEmail(null);
   };
 
   return (
     <div className="inbox-page">
-      {/* NavBar at the top or side */}
       <NavBar handleSignout={handleSignout} />
 
-      {/* Ellipse at Top-Right */}
       <div className="top-ellipse"></div>
 
-      {/* Settings Icon */}
-      <img src="src/components/img/settings.png" alt="Settings Icon" className="settings-icon" />
+      <img
+        src="src/components/img/settings.png"
+        alt="Settings Icon"
+        className="settings-icon"
+      />
 
-      {/* Header Rectangle */}
       <div className="header-rectangle">
         <div className="search-container">
-          <img src="src/components/img/search.png" alt="Search Icon" className="search-icon" />
+          <img
+            src="src/components/img/search.png"
+            alt="Search Icon"
+            className="search-icon"
+          />
           <span className="search-text">Search inbox</span>
         </div>
       </div>
@@ -55,27 +72,46 @@ const Inbox = ({ handleSignout }) => {
       <main>
         <section>
           <div className="main-rectangle">
-            {/* Welcome Message */}
-            <h1>Welcome, {user?.username || 'User'}</h1>
-            <p>
-              This is your Inbox. Here you can practice writing, sending, and
-              receiving email messages!
-            </p>
+            {selectedEmail ? (
+              <>
+                {/* Email Content Rectangle */}
+                <div className="email-content-rectangle">
+                  <h2>{selectedEmail.subject}</h2>
+                  <p>
+                    <strong>From:</strong> {selectedEmail.sender}
+                  </p>
+                  <p>{selectedEmail.body}</p>
+                </div>
 
-            {/* Email List */}
-            {emails.map((email) => (
-              <div key={email.id} className="email">
-                <h3>{email.subject}</h3>
-                <p>
-                  <strong>From:</strong> {email.sender}
-                </p>
-                <p>{email.body}</p>
-                {!email.isReplied && (
-                  <button onClick={() => handleReply(email.id)}>Reply</button>
-                )}
-                {email.isReplied && <p><em>Replied</em></p>}
+                {/* Buttons at the Bottom */}
+                <div className="email-buttons">
+                  <button className="reply-button" onClick={handleBackToInbox}>
+                    Back to Inbox
+                  </button>
+                  {!selectedEmail.isReplied && (
+                    <button className="reply-button" onClick={handleReply}>
+                      Reply
+                    </button>
+                  )}
+                </div>
+              </>
+            ) : (
+              <div className="email-list">
+                {emails.map((email) => (
+                  <div
+                    key={email.id}
+                    className="email"
+                    onClick={() => handleEmailClick(email)}
+                  >
+                    <h3>{email.subject}</h3>
+                    <p>
+                      <strong>From:</strong> {email.sender}
+                    </p>
+                    <p>{email.body}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
         </section>
       </main>

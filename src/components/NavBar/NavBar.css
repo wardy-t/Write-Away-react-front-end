@@ -51,9 +51,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none; /* Remove underline for links */
-}
-
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .compose-button:hover {
+    background-color: #f0f0f0;
+    color: #8a4f58;
+    transform: scale(1.05); /* Slight scale-up effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover shadow effect */
+  }
 .menu-buttons {
     display: flex;
     flex-direction: column;
@@ -75,8 +81,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none; /* Remove underline for links */
-}
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+
+  .menu-button:hover {
+    background-color: #f0f0f0;
+    color: #8a4f58;
+    transform: scale(1.05); /* Slight scale-up effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover shadow effect */
+  }
 
 .menu-button.active {
     background: rgba(211, 206, 206, 0.28);
