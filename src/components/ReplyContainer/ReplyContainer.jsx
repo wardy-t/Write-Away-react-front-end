@@ -43,7 +43,7 @@ const ReplyContainer = (props) => {
             className="search-icon"
           />
           <span className="search-text">
-            {props.myJob === 'drafts' ? 'Search drafts' : 'Search sent emails'}
+            {props.currentFolder === 'drafts' ? 'Search drafts' : 'Search sent emails'}
           </span>
         </div>
       </div>
@@ -52,16 +52,16 @@ const ReplyContainer = (props) => {
       <div className="main-rectangle">
         <h1>Welcome, {user.username}</h1>
         <p>
-          {props.myJob === 'drafts'
+          {props.currentFolder === 'drafts'
             ? 'Here are your saved drafts.'
             : 'Here are your sent emails.'}
         </p>
 
         <section>
-          <h2>{props.myJob === 'drafts' ? 'Drafts' : 'Sent Emails'}</h2>
+          <h2>{props.currentFolder === 'drafts' ? 'Drafts' : 'Sent Emails'}</h2>
           <div className="reply-container">
             {props.replies.map((reply) => (
-              props.myJob === reply.currentFolder && (
+              props.currentFolder === reply.currentFolder && (
                 <div key={reply.id} className="email">
                   <h3>{reply.replySubject}</h3>
                   <p>
@@ -72,7 +72,7 @@ const ReplyContainer = (props) => {
                     <button onClick={() => handleReply(reply)}>Reply</button>
                   )}
                   {reply.isReplied && <p><em>Replied</em></p>}
-                  {props.myJob === 'drafts' && (
+                  {props.currentFolder === 'drafts' && (
                     <>
                       <button onClick={() => handleEdit(reply)}>Edit</button>
                       <button onClick={() => handleDelete(reply.id)}>Delete</button>

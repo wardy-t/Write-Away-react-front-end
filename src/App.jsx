@@ -10,6 +10,7 @@ import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; // import the authservice
 import * as emailService from '../src/services/emailService';
+import * as replyService from '../src/services/replyService';
 import Edit from './components/Edit/Edit'
 
 export const AuthedUserContext = createContext(null);
@@ -134,8 +135,20 @@ const App = () => {
         console.log('emailsData:', emailsData);
         setEmails(emailsData);
       };
-      if (user) fetchAllEmails();
-    }, [user]);
+
+    const fetchAllReplies = async () => {
+      const repliesData = await replyService.index();
+      console.log('repliesData:', repliesData);
+      setReplies(repliesData);
+    };
+
+
+    if (user) {
+      fetchAllEmails();
+      fetchAllReplies();
+    }
+
+  }, [user]);
   
     const handleSignout = () => {
       authService.signout();
@@ -164,7 +177,7 @@ const App = () => {
                       user={user}
                       replies={replies}
                       setReplies={setReplies}
-                      myJob={'drafts'}
+                      currentFolder={'drafts'}
                     />}
                   />
                   <Route
@@ -173,7 +186,7 @@ const App = () => {
                       user={user}
                       replies={replies}
                       setReplies={setReplies}
-                      myJob={'sent'}
+                      currentFolder={'sent'}
                     />}
                   />
                   {/* Route for Email */}
