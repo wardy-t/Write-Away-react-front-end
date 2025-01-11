@@ -11,6 +11,17 @@ const ReplyContainer = (props) => {
     navigate('/reply', { state: { email } });
   };
 
+  const handleEdit = (email) => {
+    // Logic to edit the selected email
+    navigate('/edit', { state: { email } });
+  };
+
+  const handleDelete = (emailId) => {
+    // Logic to delete the selected email
+    const updatedReplies = props.replies.filter((reply) => reply.id !== emailId);
+    props.setReplies(updatedReplies); // Ensure `setReplies` is passed as a prop
+  };
+
   return (
     <div className="reply-page">
       {/* Top Ellipse */}
@@ -47,26 +58,28 @@ const ReplyContainer = (props) => {
         </p>
 
         <section>
-          <h2>
-            {props.myJob === 'drafts' ? 'Drafts' : 'Sent Emails'}
-          </h2>
+          <h2>{props.myJob === 'drafts' ? 'Drafts' : 'Sent Emails'}</h2>
           <div className="reply-container">
             {props.replies.map((reply) => (
-              <>
-                {props.myJob === reply.currentFolder ? (
-                  <div key={reply.id} className="email">
-                    <h3>{reply.subject}</h3>
-                    <p>
-                      <strong>From:</strong> {reply.sender}
-                    </p>
-                    <p>{reply.body}</p>
-                    {!reply.isReplied && (
-                      <button onClick={() => handleReply(reply)}>Reply</button>
-                    )}
-                    {reply.isReplied && <p><em>Replied</em></p>}
-                  </div>
-                ) : null}
-              </>
+              props.myJob === reply.currentFolder && (
+                <div key={reply.id} className="email">
+                  <h3>{reply.subject}</h3>
+                  <p>
+                    <strong>From:</strong> {reply.sender}
+                  </p>
+                  <p>{reply.body}</p>
+                  {!reply.isReplied && (
+                    <button onClick={() => handleReply(reply)}>Reply</button>
+                  )}
+                  {reply.isReplied && <p><em>Replied</em></p>}
+                  {props.myJob === 'drafts' && (
+                    <>
+                      <button onClick={() => handleEdit(reply)}>Edit</button>
+                      <button onClick={() => handleDelete(reply.id)}>Delete</button>
+                    </>
+                  )}
+                </div>
+              )
             ))}
           </div>
         </section>
