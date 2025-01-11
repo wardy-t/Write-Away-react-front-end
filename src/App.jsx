@@ -177,7 +177,7 @@ const App = () => {
                       user={user}
                       replies={replies}
                       setReplies={setReplies}
-                      currentFolder={'drafts'}
+                      myJob={'drafts'}
                     />}
                   />
                   <Route
@@ -186,7 +186,7 @@ const App = () => {
                       user={user}
                       replies={replies}
                       setReplies={setReplies}
-                      currentFolder={'sent'}
+                      myJob={'sent'}
                     />}
                   />
                   {/* Route for Email */}

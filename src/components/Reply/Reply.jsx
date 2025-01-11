@@ -23,15 +23,15 @@ const Reply = () => {
       <form>
       <label>
           <strong>To:</strong>
-          <input type="email" value={email?.sender || ''} readOnly />
+          <input type="email" value={''} />
         </label>
         <label>
           <strong>From:</strong>
-          <input type="email" value={user?.username || ''} readOnly />
+          <input type="email" value={user?.author || ''} />
         </label>
         <label>
           <strong>Subject:</strong>
-          <input type="text" value={`Re: ${email?.subject || ''}`} readOnly />
+          <input type="text" value={`Re: ${email?.replySubject || ''}`} />
         </label>
         <label>
           <strong>Message:</strong>

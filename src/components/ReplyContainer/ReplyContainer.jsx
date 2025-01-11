@@ -22,6 +22,8 @@ const ReplyContainer = (props) => {
     alert('Reply deleted successfully!');
   };
 
+  console.log("props.replies", props.replies);
+
   return (
     <div className="reply-page">
       {/* Top Ellipse */}
@@ -43,7 +45,7 @@ const ReplyContainer = (props) => {
             className="search-icon"
           />
           <span className="search-text">
-            {props.currentFolder === 'drafts' ? 'Search drafts' : 'Search sent emails'}
+            {props.myJob === 'drafts' ? 'Search drafts' : 'Search sent emails'}
           </span>
         </div>
       </div>
@@ -52,17 +54,17 @@ const ReplyContainer = (props) => {
       <div className="main-rectangle">
         <h1>Welcome, {user.username}</h1>
         <p>
-          {props.currentFolder === 'drafts'
+          {props.myJob === 'drafts'
             ? 'Here are your saved drafts.'
             : 'Here are your sent emails.'}
         </p>
 
         <section>
-          <h2>{props.currentFolder === 'drafts' ? 'Drafts' : 'Sent Emails'}</h2>
+          <h2>{props.myJob === 'drafts' ? 'Drafts' : 'Sent Emails'}</h2>
           <div className="reply-container">
             {props.replies.map((reply) => (
-              props.currentFolder === reply.currentFolder && (
-                <div key={reply.id} className="email">
+              props.myJob === reply.currentFolder && (
+                <div key={reply._id} className="email">
                   <h3>{reply.replySubject}</h3>
                   <p>
                     <strong>From:</strong> {reply.author}
@@ -72,11 +74,12 @@ const ReplyContainer = (props) => {
                     <button onClick={() => handleReply(reply)}>Reply</button>
                   )}
                   {reply.isReplied && <p><em>Replied</em></p>}
-                  {props.currentFolder === 'drafts' && (
+                  {props.myJob === 'drafts' && (
                     <>
                       <button onClick={() => handleEdit(reply)}>Edit</button>
                       <button onClick={() => handleDelete(reply.id)}>Delete</button>
                     </>
+
                   )}
                 </div>
               )
@@ -87,5 +90,7 @@ const ReplyContainer = (props) => {
     </div>
   );
 };
+
+
 
 export default ReplyContainer;
