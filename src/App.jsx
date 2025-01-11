@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
@@ -9,6 +9,7 @@ import Reply from './components/Reply/Reply';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; // import the authservice
+import * as emailService from '../src/services/emailService';
 import Edit from './components/Edit/Edit'
 
 export const AuthedUserContext = createContext(null);
@@ -126,6 +127,15 @@ const App = () => {
       currentFolder: "drafts"
     }
     ]);
+
+    useEffect(() => {
+      const fetchAllEmails = async () => {
+        const emailsData = await emailService.index();
+        console.log('emailsData:', emailsData);
+        setEmails(emailsData);
+      };
+      if (user) fetchAllEmails();
+    }, [user]);
   
     const handleSignout = () => {
       authService.signout();
