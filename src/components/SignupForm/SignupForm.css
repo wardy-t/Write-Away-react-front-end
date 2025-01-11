@@ -1,139 +1,125 @@
 /* Global Styles */
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #a26b72; /* Match the exact background color */
-  font-family: "Lato", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+background-color: #a26b72; /* Match the exact background color */
+font-family: "Lato", sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
 }
 
 /* Signup Container */
 .signup-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
 }
 
 /* Rectangle Styling */
 .signup-rectangle {
-  width: 342px;
-  height: 528px;
-  background: rgba(217, 217, 217, 0.5); /* Slight transparency */
-  border-radius: 30px; /* Rounded corners for all sides */
-  position: relative; /* Relative to child elements */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  overflow-y: auto; /* Enable vertical scrolling for overflowing content */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+width: 342px;
+height: 528px;
+background: rgba(217, 217, 217, 0.5); /* Slight transparency */
+border-radius: 30px; /* Rounded corners for all sides */
+position: relative; /* Relative to child elements */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px;
+overflow-y: auto; /* Enable vertical scrolling for overflowing content */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
 }
 
 /* Ellipse */
 .signup-ellipse {
-  width: 54px;
-  height: 54px;
-  background: #d9d9d9;
-  border-radius: 50%;
-  position: absolute;
-  top: 20px; /* Adjust for spacing at the top */
-  left: 20px; /* Move ellipse to the left */
+width: 54px;
+height: 54px;
+background: #d9d9d9;
+border-radius: 50%;
+position: absolute;
+top: 20px; /* Adjust for spacing at the top */
+left: 20px; /* Move ellipse to the left */
 }
 
 /* Signup Form */
 .signup-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px; /* Space between form elements */
-  margin-top: 100px; /* Space below the ellipse */
-  width: 80%; /* Form width relative to rectangle */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 20px; /* Space between form elements */
+margin-top: 100px; /* Space below the ellipse */
+width: 80%; /* Form width relative to rectangle */
 }
 
 /* Title */
 .signup-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff; /* White text */
-  text-align: center;
-  margin-bottom: 20px; /* Space below the title */
-  width: 100%;
+font-size: 24px;
+font-weight: bold;
+color: #ffffff; /* White text */
+text-align: center;
+margin-bottom: 20px; /* Space below the title */
+width: 100%;
 }
 
 /* Error Message */
 .signup-message {
-  color: #ffdddd; /* Light red for errors */
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-align: left;
+color: #ffdddd; /* Light red for errors */
+font-size: 14px;
+margin-bottom: 10px;
+text-align: left;
 }
 
 /* Form Labels */
 .form-label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff; /* White text */
-  margin-bottom: 5px;
+font-size: 14px;
+font-weight: bold;
+color: #ffffff; /* White text */
+margin-bottom: 5px;
 }
 
 /* Form Inputs */
 .form-input {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 20px;
-  background: rgba(211, 206, 206, 0.28); /* Slight transparency */
-  font-size: 14px;
-  color: #ffffff; /* White text for the input text */
-  outline: none;
+width: 100%;
+padding: 10px;
+border: none;
+border-radius: 20px;
+background: rgba(211, 206, 206, 0.28); /* Slight transparency */
+font-size: 14px;
+color: #ffffff; /* White text for the input text */
+outline: none;
 }
 
 .form-input::placeholder {
-  color: rgba(255, 255, 255, 0.4); /* White with 40% opacity */
+color: rgba(255, 255, 255, 0.4); /* White with 40% opacity */
 }
 
 /* Buttons */
 .form-buttons {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+display: flex;
+justify-content: space-between;
+width: 100%;
 }
 
-.signup-button {
-  padding: 10px 20px;
-  background: rgba(211, 206, 206, 0.28); /* Slight transparency */
-  border: none;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff; /* White text */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.signup-button,
+.logout-button { /* Style both buttons */
+padding: 10px 20px;
+background: rgba(211, 206, 206, 0.28); /* Slight transparency */
+border: none;
+border-radius: 20px;
+font-size: 14px;
+font-weight: bold;
+color: #ffffff; /* White text */
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
-.signup-button:hover {
-  background: rgba(211, 206, 206, 0.5); /* Darker background on hover */
-}
-
-.cancel-button {
-  padding: 10px 20px;
-  background: rgba(211, 206, 206, 0.28); /* Slight transparency */
-  border: none;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff; /* White text */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cancel-button:hover {
-  background: rgba(211, 206, 206, 0.5); /* Darker background on hover */
+.signup-button:hover,
+.logout-button:hover { /* Hover effect for both buttons */
+background: rgba(211, 206, 206, 0.5); /* Darker background on hover */
 }

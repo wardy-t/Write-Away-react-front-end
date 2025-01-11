@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService';
 import './SignupForm.css';
 
@@ -17,7 +17,7 @@ const SignupForm = (props) => {
   };
 
   const handleChange = (e) => {
-    updateMessage("");
+    updateMessage('');
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -32,6 +32,12 @@ const SignupForm = (props) => {
     }
   };
 
+  const handleLogout = () => {
+    authService.signout(); // Clear user data
+    props.setUser(null); // Reset user state
+    navigate('/'); // Redirect to Landing page
+  };
+
   const { username, password, passwordConf } = formData;
 
   const isFormInvalid = () => {
@@ -40,18 +46,18 @@ const SignupForm = (props) => {
 
   return (
     <div className="signup-container">
-    <div className="signup-rectangle">
-      <div className="signup-ellipse"></div>
-      <form className="signup-form" autoComplete="off" onSubmit={handleSubmit}>
-        <h1 className="signup-title">Sign Up</h1>
-        <p className="signup-message">{message}</p>
+      <div className="signup-rectangle">
+        <div className="signup-ellipse"></div>
+        <form className="signup-form" autoComplete="off" onSubmit={handleSubmit}>
+          <h1 className="signup-title">Sign Up</h1>
+          <p className="signup-message">{message}</p>
 
-        <label htmlFor="username" className="form-label">
-          Username
-        </label>
-        <input
-          type="text"
-          id="username"
+          <label htmlFor="username" className="form-label">
+            Username
+          </label>
+          <input
+            type="text"
+            id="username"
             name="username"
             className="form-input"
             placeholder="Enter username"
@@ -90,11 +96,13 @@ const SignupForm = (props) => {
             >
               Sign Up
             </button>
-            <Link to="/">
-              <button type="button" className="cancel-button">
-                Cancel
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="logout-button"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
           </div>
         </form>
       </div>
