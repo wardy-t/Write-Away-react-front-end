@@ -9,6 +9,7 @@ import Reply from './components/Reply/Reply';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; // import the authservice
+import Edit from './components/Edit/Edit'
 
 export const AuthedUserContext = createContext(null);
 
@@ -166,6 +167,7 @@ const App = () => {
                   {/* Route for Email */}
                   <Route path="/email" element={<Email />} />
                   <Route path="/reply" element={<Reply />} />
+                  <Route path="/edit" element={<Edit />} /> 
                 </>
               )}
             </>
