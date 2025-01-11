@@ -60,29 +60,18 @@ const ReplyContainer = (props) => {
         </p>
 
         <section>
-          <h2>{props.myJob === 'drafts' ? 'Drafts' : 'Sent Emails'}</h2>
+          <h2>{props.myJob === 'drafts' ? 'drafts' : 'sent'}</h2>
           <div className="reply-container">
-            {props.replies.map((reply) => (
-              props.myJob === reply.currentFolder && (
+          {props.replies.map((reply) => (
+              props.myJob === reply.currentFolder ? (
                 <div key={reply._id} className="email">
                   <h3>{reply.replySubject}</h3>
                   <p>
-                    <strong>From:</strong> {reply.author}
+                    <strong>From:</strong> {reply.author.username}
                   </p>
-                  <p>{reply.replyBody}</p>
-                  {!reply.isReplied && (
-                    <button onClick={() => handleReply(reply)}>Reply</button>
-                  )}
-                  {reply.isReplied && <p><em>Replied</em></p>}
-                  {props.myJob === 'drafts' && (
-                    <>
-                      <button onClick={() => handleEdit(reply)}>Edit</button>
-                      <button onClick={() => handleDelete(reply.id)}>Delete</button>
-                    </>
-
-                  )}
+                  <p>{reply.replyBody}</p> 
                 </div>
-              )
+              ) : null
             ))}
           </div>
         </section>
