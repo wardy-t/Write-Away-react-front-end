@@ -153,6 +153,7 @@ const App = () => {
                     element={<ReplyContainer
                       user={user}
                       replies={replies}
+                      setReplies={setReplies}
                       myJob={'drafts'}
                     />}
                   />
@@ -161,6 +162,7 @@ const App = () => {
                     element={<ReplyContainer
                       user={user}
                       replies={replies}
+                      setReplies={setReplies}
                       myJob={'sent'}
                     />}
                   />

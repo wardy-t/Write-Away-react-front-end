@@ -17,9 +17,9 @@ const ReplyContainer = (props) => {
   };
 
   const handleDelete = (emailId) => {
-    // Logic to delete the selected email
     const updatedReplies = props.replies.filter((reply) => reply.id !== emailId);
-    props.setReplies(updatedReplies); // Ensure `setReplies` is passed as a prop
+    props.setReplies(updatedReplies); // Update the main state in App
+    alert('Reply deleted successfully!');
   };
 
   return (
