@@ -91,11 +91,11 @@ const EmailContainer = ({ handleSignout, emails }) => {
                   className="email"
                   onClick={() => handleEmailClick(email)}
                 >
-                  <h3>{email.subject}</h3>
+                  <h3>{email.emailSubject}</h3>
                   <p>
-                    <strong>From:</strong> {email.sender}
+                    <strong>From:</strong> {email.emailFrom}
                   </p>
-                  <p>{email.body}</p>
+                  <p>{email.emailBody}</p>
                 </div>
               ))}
             </div>

@@ -63,11 +63,11 @@ const ReplyContainer = (props) => {
             {props.replies.map((reply) => (
               props.myJob === reply.currentFolder && (
                 <div key={reply.id} className="email">
-                  <h3>{reply.subject}</h3>
+                  <h3>{reply.replySubject}</h3>
                   <p>
-                    <strong>From:</strong> {reply.sender}
+                    <strong>From:</strong> {reply.author}
                   </p>
-                  <p>{reply.body}</p>
+                  <p>{reply.replyBody}</p>
                   {!reply.isReplied && (
                     <button onClick={() => handleReply(reply)}>Reply</button>
                   )}
