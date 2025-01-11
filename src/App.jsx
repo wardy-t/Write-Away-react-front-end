@@ -56,70 +56,70 @@ const App = () => {
 
   const [replies, setReplies] = useState([
     {
-      id: "1",
+      id: "1d",
       sender: "Stephen@student.write-away",
       subject: "Re: Reminder: Submit Your Homework by Tomorrow!",
       body: "Hi Rachel, thanks for the reminder! I'll make sure to submit my homework by the deadline. Let me know if there's anything specific I should focus on.",
       currentFolder: "sent"
     },
     {
-      id: "2",
+      id: "2d",
       sender: "Stephen@student.write-away",
       subject: "Re: Important: Upcoming Parent-Teacher Conference",
       body: "Hi Rachel, thanks for the update. I'll let my parents know about the conference. We'll RSVP by the end of the week.",
       currentFolder: "sent"
     },
     {
-      id: "3",
+      id: "3d",
       sender: "Stephen@student.write-away",
       subject: "Re: Great Job on the Science Fair!",
       body: "Hi Rachel, thank you for the kind words! I really enjoyed working on my project and seeing everyone else's creativity. It was a great experience!",
       currentFolder: "sent"
     },
     {
-      id: "4",
+      id: "4d",
       sender: "Stephen@student.write-away",
       subject: "Re: Weekly Assignment Update",
       body: "Hi Rachel, thanks for the update! I'll check the class portal and reach out if I have any questions about the assignments.",
       currentFolder: "sent"
     },
     {
-      id: "5",
+      id: "5d",
       sender: "Stephen@student.write-away",
       subject: "Re: Class Field Trip Details",
       body: "Hi Rachel, I'm excited for the field trip! I'll make sure to bring my permission slip and lunch as instructed. Thanks for organizing this!",
       currentFolder: "sent"
     },
     {
-      id: "1",
+      id: "1s",
       sender: "Stephen@student.write-away",
       subject: "Re: Reminder: Submit Your Homework by Tomorrow!",
       body: "Hi Rachel, thanks for the reminder! I'll make sure to...",
       currentFolder: "drafts"
     },
     {
-      id: "2",
+      id: "2s",
       sender: "Stephen@student.write-away",
       subject: "Re: Important: Upcoming Parent-Teacher Conference",
       body: "Hi Rachel, thanks for the update. I'll let my parents know about...",
       currentFolder: "drafts"
     },
     {
-      id: "3",
+      id: "3s",
       sender: "Stephen@student.write-away",
       subject: "Re: Great Job on the Science Fair!",
       body: "Hi Rachel, thank you for the kind words! I really enjoyed working on my project and...",
       currentFolder: "drafts"
     },
     {
-      id: "4",
+      id: "4s",
       sender: "Stephen@student.write-away",
       subject: "Re: Weekly Assignment Update",
       body: "Hi Rachel, thanks for the update! I'll check the class portal and...",
       currentFolder: "drafts"
     },
     {
-      id: "5",
+      id: "5s",
       sender: "Stephen@student.write-away",
       subject: "Re: Class Field Trip Details",
       body: "Hi Rachel, I'm excited for the field trip! I'll make sure to...",
