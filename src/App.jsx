@@ -28,6 +28,13 @@ const App = () => {
     navigate('/');
   };
 
+  const handleSendReply = async (replyDetails) => {
+    const newReply = await replyService.createReply(replyDetails);
+    setReplies([newReply, ...replies])
+    console.log('replyDetails', replyDetails);
+    navigate('/');
+  };
+
   // Mock email data
   const [emails, setEmails] = useState([
     {
@@ -201,7 +208,7 @@ const App = () => {
                   />
                   {/* Route for Email */}
                   <Route path="/email" element={<Email handleSendEmail={handleSendEmail}/>} />
-                  <Route path="/reply" element={<Reply />} />
+                  <Route path="/reply" element={<Reply handleSendReply={handleSendReply}/>} />
                   <Route path="/edit" element={<Edit />} /> 
                 </>
               )}
