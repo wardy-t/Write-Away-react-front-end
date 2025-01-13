@@ -22,6 +22,7 @@ const Email = ({ handleSignout }) => {
     console.log('Sending email with details:', emailDetails);
     alert('Email sent!');
     // Add email sending logic here
+    
   };
 
   const handleSave = () => {

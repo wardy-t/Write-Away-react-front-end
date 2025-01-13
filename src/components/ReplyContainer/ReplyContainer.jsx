@@ -70,11 +70,22 @@ const ReplyContainer = (props) => {
                     <strong>From:</strong> {reply.author.username}
                   </p>
                   <p>{reply.replyBody}</p> 
-                </div>
-              ) : null
-            ))}
-          </div>
-        </section>
+          {!reply.isReplied ? (
+            <button onClick={() => handleReply(reply)}>Reply</button>
+          ) : (
+            <p><em>Replied</em></p>
+          )}
+          {props.myJob === 'drafts' ? (
+            <>
+              <button onClick={() => handleEdit(reply)}>Edit</button>
+              <button onClick={() => handleDelete(reply.id)}>Delete</button>
+            </>
+          ) : null}
+        </div>
+      ) : null
+    ))}
+  </div>
+</section>
       </div>
     </div>
   );
