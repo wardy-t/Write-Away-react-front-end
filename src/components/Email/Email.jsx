@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import './Email.css'; // Import email-specific styles
 import NavBar from '../NavBar/NavBar'; // Import NavBar
-import './email.css'; // Import email-specific styles
+
 import { signout } from '../../services/authService';
 
 const Email = (props, handleSignout) => {
@@ -20,7 +21,6 @@ const Email = (props, handleSignout) => {
     props.handleSendEmail(emailDetails)
     console.log('Sending email with details:', emailDetails);
     alert('Email sent!');
-    // Add email sending logic here
   };
 
   const handleSave = () => {

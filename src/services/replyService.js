@@ -4,22 +4,38 @@ const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/replies`;
 
 const index = async () => {
 
-try {
+    try {
 
-const res = await fetch(BASE_URL, {
+        const res = await fetch(BASE_URL, {
 
-headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 
-});
+        });
 
-return res.json();
+        return res.json();
 
-} catch (error) {
+    } catch (error) {
 
-console.log(error);
+        console.log(error);
 
-}
+    }
 
 };
 
-export { index };
+const createReply = async (replyDetails) => {
+    try {
+        const res = await fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(replyDetails),
+            });
+            return res.json();
+          } catch (error) {
+            console.log(error);
+          }
+};
+
+export { index, createReply };
