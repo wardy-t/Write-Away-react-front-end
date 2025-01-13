@@ -6,9 +6,9 @@ import { signout } from '../../services/authService';
 const Email = (props, handleSignout) => {
   const [emailDetails, setEmailDetails] = useState({
     to: '',
-    from: '',
-    subject: '',
-    message: '',
+    emailFrom: '',
+    emailSubject: '',
+    emailBody: '',
   });
 
   const handleChange = (evt) => {
@@ -80,9 +80,9 @@ const Email = (props, handleSignout) => {
               <input
                 type="email"
                 className="email-input"
-                id="from"
-                name="from"
-                value={emailDetails.from}
+                id="emailFrom"
+                name="emailFrom"
+                value={emailDetails.emailFrom}
                 onChange={handleChange}
                 placeholder="Your email"
                 required
@@ -93,9 +93,9 @@ const Email = (props, handleSignout) => {
               <input
                 type="text"
                 className="email-input"
-                id="subject"
-                name="subject"
-                value={emailDetails.subject}
+                id="emailSubject"
+                name="emailSubject"
+                value={emailDetails.emailSubject}
                 onChange={handleChange}
                 placeholder="Email subject"
                 required
@@ -105,9 +105,9 @@ const Email = (props, handleSignout) => {
               <strong>Message:</strong>
               <textarea
                 className="email-textarea"
-                id="message"
-                name="message"
-                value={emailDetails.message}
+                id="emailBody"
+                name="emailBody"
+                value={emailDetails.emailBody}
                 onChange={handleChange}
                 placeholder="Write your message here"
                 rows="6"
