@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import NavBar from '../NavBar/NavBar'; // Import NavBar
 import './email.css'; // Import email-specific styles
+import { signout } from '../../services/authService';
 
-const Email = ({ handleSignout }) => {
+const Email = (props, handleSignout) => {
   const [emailDetails, setEmailDetails] = useState({
     to: '',
     from: '',
@@ -10,19 +11,16 @@ const Email = ({ handleSignout }) => {
     message: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEmailDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value,
-    }));
+  const handleChange = (evt) => {
+    setEmailDetails({ ...emailDetails, [evt.target.name]: evt.target.value });
   };
 
-  const handleSend = () => {
+  const handleSend = (evt) => {
+    evt.preventDefault();
+    props.handleSendEmail(emailDetails)
     console.log('Sending email with details:', emailDetails);
     alert('Email sent!');
     // Add email sending logic here
-    
   };
 
   const handleSave = () => {

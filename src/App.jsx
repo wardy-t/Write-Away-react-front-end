@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
 import EmailContainer from './components/EmailContainer/EmailContainer';
@@ -15,8 +15,18 @@ import Edit from './components/Edit/Edit'
 
 export const AuthedUserContext = createContext(null);
 
+
+
 const App = () => {
   const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+  const navigate = useNavigate();
+
+  const handleSendEmail = async (emailDetails) => {
+    const newEmail = await emailService.create(emailDetails);
+    setEmails([newEmail, ...emails])
+    console.log('emailDetails', emailDetails);
+    navigate('/');
+  };
 
   // Mock email data
   const [emails, setEmails] = useState([
@@ -190,7 +200,7 @@ const App = () => {
                     />}
                   />
                   {/* Route for Email */}
-                  <Route path="/email" element={<Email />} />
+                  <Route path="/email" element={<Email handleSendEmail={handleSendEmail}/>} />
                   <Route path="/reply" element={<Reply />} />
                   <Route path="/edit" element={<Edit />} /> 
                 </>
