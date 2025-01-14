@@ -209,7 +209,7 @@ const App = () => {
                   {/* Route for Email */}
                   <Route path="/email" element={<Email handleSendEmail={handleSendEmail}/>} />
                   <Route path="/reply" element={<Reply handleSendReply={handleSendReply}/>} />
-                  <Route path="/edit" element={<Edit />} /> 
+                  
                 </>
               )}
             </>

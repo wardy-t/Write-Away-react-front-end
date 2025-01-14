@@ -1,34 +1,50 @@
 import { useState } from 'react';
 import './Reply.css'; // Import email-specific styles
 import NavBar from '../NavBar/NavBar';
+import { useLocation } from 'react-router-dom'
+
+
 
 
 const Reply = (props, handleSignout) => {
-  const [replyDetails, setReplyDetails] = useState({
-    replyTo: '',
-    replySubject: '',
-    replyBody: '',
-  });
+  const location = useLocation();
+  const email = location.state?.email
 
+
+  const [replyDetails, setReplyDetails] = useState({
+    replyTo: email ? email.author.username : '',
+    replySubject: email ? email.replySubject : '',
+    replyBody: email ? `Re: ${email.replySubject}\n\n${email.replyBody}` : '',
+  });
 
   const handleChange = (evt) => {
     setReplyDetails({ ...replyDetails, [evt.target.name]: evt.target.value });
   };
 
-  const handleSend = (evt) => {
-    evt.preventDefault();
-    props.handleSendReply(replyDetails)
-    console.log('Sending Reply with details:', replyDetails);
-    alert('Reply sent!');
-  };
 
-  const handleSave = () => {
-    alert('Reply saved as draft!');
-    console.log('Saving reply draft:', replyDetails);
-    const drafts = JSON.parse(localStorage.getItem('drafts')) || [];
-    drafts.push(replyDetails);
-    localStorage.setItem('drafts', JSON.stringify(drafts));
-    alert('Reply draft saved!');
+
+  const handleSend = (evt) => {
+    console.log('handleSend called');
+    evt.preventDefault();
+    setReplyDetails((prevDetails) => {
+      const updatedDetails = { ...prevDetails, currentFolder: 'sent' };
+      console.log('Sending Reply with details:', updatedDetails);
+      props.handleSendReply(updatedDetails); // Use the updated details
+      alert('Reply sent!');
+      return updatedDetails; // Update the state
+    });
+  };
+  
+  const handleSave = (evt) => {
+    console.log('handleSave called');
+    evt.preventDefault();
+    setReplyDetails((prevDetails) => {
+      const updatedDetails = { ...prevDetails, currentFolder: 'drafts' };
+      console.log('Saving Reply to drafts:', updatedDetails);
+      props.handleSendReply(updatedDetails); // Use the updated details
+      alert('Reply saved!');
+      return updatedDetails; // Update the state
+    });
   };
 
   return (

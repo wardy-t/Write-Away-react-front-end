@@ -57,11 +57,11 @@ const EmailContainer = ({ handleSignout, emails }) => {
           <>
             {/* Email Content Rectangle */}
             <div className="email-content-rectangle">
-              <h2>{selectedEmail.subject}</h2>
+              <h2>{selectedEmail.emailSubject}</h2>
               <p>
-                <strong>From:</strong> {selectedEmail.sender}
+                <strong>From:</strong> {selectedEmail.emailFrom}
               </p>
-              <p>{selectedEmail.body}</p>
+              <p>{selectedEmail.emailBody}</p>
             </div>
 
             {/* Buttons */}
