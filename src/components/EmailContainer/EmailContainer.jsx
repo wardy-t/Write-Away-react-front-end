@@ -85,7 +85,9 @@ const EmailContainer = ({ handleSignout, emails }) => {
             </p>
 
             <div className="email-list">
-              {emails.map((email) => (
+              
+              {emails.length > 0 ? (
+                emails.map((email) => (
                 <div
                   key={email.id}
                   className="email"
@@ -97,7 +99,10 @@ const EmailContainer = ({ handleSignout, emails }) => {
                   </p>
                   <p>{email.emailBody}</p>
                 </div>
-              ))}
+              ))
+            ) : (
+              <p>No emails available.</p>
+            )}
             </div>
           </>
         )}
