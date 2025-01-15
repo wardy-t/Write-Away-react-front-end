@@ -89,7 +89,7 @@ const EmailContainer = ({ handleSignout, emails }) => {
               {emails.length > 0 ? (
                 emails.map((email) => (
                 <div
-                  key={email.id}
+                  key={email._id}
                   className="email"
                   onClick={() => handleEmailClick(email)}
                 >

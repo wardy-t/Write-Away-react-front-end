@@ -8,6 +8,7 @@ const ReplyContainer = (props) => {
   const navigate = useNavigate();
 
   const handleReply = (email) => {
+    console.log('handle reply')
     navigate('/reply', { state: { email } }); //Is this the reason for dupe? HandleReply and HandleSendReply doing same job?
   };
 

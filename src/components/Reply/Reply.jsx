@@ -11,7 +11,7 @@ const Reply = (props, handleSignout) => {
   console.log('location.state:', location.state)
   const email = location.state?.email
   
-  
+
 
 
   const [replyDetails, setReplyDetails] = useState({
@@ -33,9 +33,9 @@ const Reply = (props, handleSignout) => {
     setReplyDetails((prevDetails) => {
       const updatedDetails = { ...prevDetails, currentFolder: 'sent' };
       console.log('Sending Reply with details:', updatedDetails);
-      props.handleSendReply(updatedDetails); // Use the updated details
+      props.handleSendReply(updatedDetails); 
       alert('Reply sent!');
-      return updatedDetails; // Update the state
+      return updatedDetails; 
     });
   };
   
@@ -45,9 +45,9 @@ const Reply = (props, handleSignout) => {
     setReplyDetails((prevDetails) => {
       const updatedDetails = { ...prevDetails, currentFolder: 'drafts' };
       console.log('Saving Reply to drafts:', updatedDetails);
-      props.handleSendReply(updatedDetails); // Use the updated details
+      props.handleSendReply(updatedDetails); 
       alert('Reply saved!');
-      return updatedDetails; // Update the state
+      return updatedDetails; 
     });
   };
 
