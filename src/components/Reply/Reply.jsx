@@ -8,13 +8,17 @@ import { useLocation } from 'react-router-dom'
 
 const Reply = (props, handleSignout) => {
   const location = useLocation();
+  console.log('location.state:', location.state)
   const email = location.state?.email
+  
+  
 
 
   const [replyDetails, setReplyDetails] = useState({
     replyTo: email ? email.author.username : '',
     replySubject: email ? email.replySubject : '',
     replyBody: email ? `Re: ${email.replySubject}\n\n${email.replyBody}` : '',
+    currentFolder: '',
   });
 
   const handleChange = (evt) => {

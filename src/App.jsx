@@ -35,6 +35,24 @@ const App = () => {
     navigate('/');
   };
 
+  const handleDeleteReply = async (replyId) => {
+    console.log("Deleting reply with ID:", replyId);   
+    try {
+      // Call the delete function from replyService to delete the reply on the backend
+      await replyService.deleteReply(replyId);
+  
+      // After the reply is deleted, update the state to remove it from the UI
+      setReplies(prevReplies => prevReplies.filter(reply => reply._id !== replyId));
+      
+      // Optionally show an alert or some feedback to the user
+      alert('Reply deleted successfully!');
+    } catch (error) {
+      // Log any errors that happen during the deletion process
+      console.error('Error deleting reply:', error);
+      alert('There was an error deleting the reply.');
+    }
+  };
+
   // Mock email data
   const [emails, setEmails] = useState([
     {
@@ -195,6 +213,7 @@ const App = () => {
                       replies={replies}
                       setReplies={setReplies}
                       myJob={'drafts'}
+                      handleDeleteReply={handleDeleteReply}
                     />}
                   />
                   <Route

@@ -8,19 +8,21 @@ const ReplyContainer = (props) => {
   const navigate = useNavigate();
 
   const handleReply = (email) => {
-    navigate('/reply', { state: { email } });
+    navigate('/reply', { state: { email } }); //Is this the reason for dupe? HandleReply and HandleSendReply doing same job?
   };
 
-  const handleEdit = (email) => {
+ // const handleEdit = (email) => {
     // Logic to edit the selected email
-    navigate('/edit', { state: { email } });
-  };
+   // navigate('/edit', { state: { email } });
+ // };
 
-  const handleDelete = (emailId) => {
-    const updatedReplies = props.replies.filter((reply) => reply.id !== emailId);
-    props.setReplies(updatedReplies); // Update the main state in App
-    alert('Reply deleted successfully!');
+  const handleDelete = (_id) => {
+    props.handleDeleteReply(_id)
   };
+  //  const updatedReplies = props.replies.filter((reply) => reply.id !== emailId);
+   // props.setReplies(updatedReplies); // Update the main state in App
+   // alert('Reply deleted successfully!');
+ // };
 
   console.log("props.replies", props.replies);
 
@@ -78,7 +80,7 @@ const ReplyContainer = (props) => {
                   )}
                   {props.myJob === 'drafts' ? (
                     <>
-                      <button className='reply-button' onClick={() => handleDelete(reply.id)}>Delete</button>
+                      <button className='reply-button' onClick={() => handleDelete(reply._id)}>Delete</button>
                       
                     </>
                   ) : null}
