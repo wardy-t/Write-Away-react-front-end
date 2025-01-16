@@ -10,7 +10,7 @@ const Reply = (props, handleSignout) => {
   const location = useLocation();
   console.log('location.state:', location.state)
   const email = location.state?.email
-  
+
 
 
 
@@ -25,43 +25,53 @@ const Reply = (props, handleSignout) => {
     setReplyDetails({ ...replyDetails, [evt.target.name]: evt.target.value });
   };
 
-
-
   const handleSend = (evt) => {
-    console.log('handleSend called');
     evt.preventDefault();
-    setReplyDetails((prevDetails) => {
-      const updatedDetails = { ...prevDetails, currentFolder: 'sent' };
-      console.log('Sending Reply with details:', updatedDetails);
-      props.handleSendReply(updatedDetails); 
-      alert('Reply sent!');
-      return updatedDetails; 
-    });
-  };
-  
-  const handleSave = (evt) => {
     console.log('handleSave called');
+
+    // Create the updated details object
+    const updatedDetails = { ...replyDetails, currentFolder: 'sent' };
+
+    // Log and send the reply
+    console.log('Saving Reply as sent:', updatedDetails);
+    props.handleSendReply(updatedDetails);
+
+    // Update the state with the new details
+    setReplyDetails(updatedDetails);
+
+    // Show alert
+    alert('Reply Sent!');
+  };
+
+  const handleSave = (evt) => {
     evt.preventDefault();
-    setReplyDetails((prevDetails) => {
-      const updatedDetails = { ...prevDetails, currentFolder: 'drafts' };
-      console.log('Saving Reply to drafts:', updatedDetails);
-      props.handleSendReply(updatedDetails); 
-      alert('Reply saved!');
-      return updatedDetails; 
-    });
+    console.log('handleSave called');
+
+    // Create the updated details object
+    const updatedDetails = { ...replyDetails, currentFolder: 'drafts' };
+
+    // Log and send the reply
+    console.log('Saving Reply as drafts:', updatedDetails);
+    props.handleSendReply(updatedDetails);
+
+    // Update the state with the new details
+    setReplyDetails(updatedDetails);
+
+    // Show alert
+    alert('Reply Saved!');
   };
 
   return (
     <div className="reply-page">
-    <NavBar handleSignout={handleSignout} />
-    <div className="top-ellipse"></div>
-    <img
+      <NavBar handleSignout={handleSignout} />
+      <div className="top-ellipse"></div>
+      <img
         src="src/components/img/settings.png"
         alt="Settings Icon"
         className="settings-icon"
       />
 
-    <div className="header-rectangle">
+      <div className="header-rectangle">
         <div className="search-container">
           <img
             src="src/components/img/search.png"
@@ -70,9 +80,9 @@ const Reply = (props, handleSignout) => {
           />
           <span className="search-text">Compose Reply</span>
         </div>
-    </div>
+      </div>
 
-    <div className="main-rectangle">
+      <div className="main-rectangle">
         <div className="email-content-rectangle">
           <form className="email-form">
             <label className="email-label">
