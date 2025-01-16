@@ -10,7 +10,7 @@ const Edit = () => {
 
   // State for the editable fields
   const [editedEmail, setEditedEmail] = useState({
-    to: email?.to || '',
+    To: email?.to || '',
     subject: email?.subject || '',
     body: email?.body || '',
   });

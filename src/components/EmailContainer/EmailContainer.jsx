@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import './EmailContainer.css';
 
-const EmailContainer = ({ handleSignout, emails }) => {
+const EmailContainer = ({ handleSignout, emails, handleDeleteEmail }) => {
   const user = useContext(AuthedUserContext);
   const navigate = useNavigate();
 
@@ -18,6 +18,10 @@ const EmailContainer = ({ handleSignout, emails }) => {
     if (selectedEmail) {
       navigate('/reply', { state: { email: selectedEmail } });
     }
+  };
+
+  const handleDelete = (_id) => {
+    handleDeleteEmail(_id)
   };
 
   const handleBackToInbox = () => {
@@ -74,6 +78,14 @@ const EmailContainer = ({ handleSignout, emails }) => {
                   Reply
                 </button>
               )}
+              <button 
+              className='reply-button' 
+              onClick={() => {
+                handleDelete(selectedEmail._id);
+                handleBackToInbox();
+              }}
+
+              >Delete</button>
             </div>
           </>
         ) : (

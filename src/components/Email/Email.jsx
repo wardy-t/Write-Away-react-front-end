@@ -23,14 +23,6 @@ const Email = (props, handleSignout) => {
     alert('Email sent!');
   };
 
-  const handleSave = () => {
-    console.log('Saving email draft:', emailDetails);
-    const drafts = JSON.parse(localStorage.getItem('drafts')) || [];
-    drafts.push(emailDetails);
-    localStorage.setItem('drafts', JSON.stringify(drafts));
-    alert('Email draft saved!');
-  };
-
   return (
     <div className="email-page">
       {/* NavBar */}
@@ -119,13 +111,6 @@ const Email = (props, handleSignout) => {
 
         {/* Buttons */}
         <div className="email-buttons">
-          <button
-            type="button"
-            className="save-to-drafts-button"
-            onClick={handleSave}
-          >
-            Save to Drafts
-          </button>
           <button type="button" className="send-button" onClick={handleSend}>
             Send
           </button>

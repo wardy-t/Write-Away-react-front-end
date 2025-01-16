@@ -35,6 +35,20 @@ const App = () => {
     navigate('/');
   };
 
+  const handleDeleteEmail = async (emailId) => {
+    console.log("Deleting email with ID:", emailId);   
+    try {
+      await emailService.deleteEmail(emailId);
+  
+      setEmails(prevEmails => prevEmails.filter(email => email._id !== emailId));
+      
+      alert('Email deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting email:', error);
+      alert('There was an error deleting the email.');
+    }
+  };
+
   const handleDeleteReply = async (replyId) => {
     console.log("Deleting reply with ID:", replyId);   
     try {
@@ -94,7 +108,11 @@ const App = () => {
                   {/* Route for Inbox */}
                   <Route
                     path="/"
-                    element={<EmailContainer user={user} emails={emails} />}
+                    element={<EmailContainer 
+                      user={user} 
+                      emails={emails} 
+                      handleDeleteEmail={handleDeleteEmail}
+                      />}
                   />
                   <Route
                     path="/drafts"
