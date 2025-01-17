@@ -78,6 +78,10 @@ const EmailContainer = ({ handleSignout, emails, handleDeleteEmail }) => {
                   Reply
                 </button>
               )}
+              <button
+              className="reply-button"
+              onClick={() => navigate(`/${selectedEmail._id}`)}
+              >Edit</button>
               <button 
               className='reply-button' 
               onClick={() => {

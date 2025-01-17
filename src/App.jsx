@@ -6,12 +6,13 @@ import EmailContainer from './components/EmailContainer/EmailContainer';
 import ReplyContainer from './components/ReplyContainer/ReplyContainer';
 import Email from './components/Email/Email'; // Import the Email component
 import Reply from './components/Reply/Reply';
+import Edit from './components/Edit/Edit'
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'; // import the authservice
 import * as emailService from '../src/services/emailService';
 import * as replyService from '../src/services/replyService';
-import Edit from './components/Edit/Edit'
+
 
 export const AuthedUserContext = createContext(null);
 
@@ -136,7 +137,7 @@ const App = () => {
                   {/* Route for Email */}
                   <Route path="/email" element={<Email handleSendEmail={handleSendEmail}/>} />
                   <Route path="/reply" element={<Reply handleSendReply={handleSendReply}/>} />
-                  
+                  <Route path="/:id" element={<Edit />} />
                 </>
               )}
             </>
