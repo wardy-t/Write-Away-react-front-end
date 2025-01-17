@@ -5,23 +5,23 @@ import NavBar from '../NavBar/NavBar';
 import './Edit.css'
 
 
-const Edit = () => {
+const Edit = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { email } = location.state || {}; // Retrieve the passed email data
+    console.log("is email being passed", email)
   const user = useContext(AuthedUserContext);
   const { id } = useParams();
 
   // State for the editable fields
   const [editedEmail, setEditedEmail] = useState({
-    To: email?.to || '',
-    subject: email?.subject || '',
-    body: email?.body || '',
+    emailFrom: email?.emailFrom || '',
+    emailSubject: email?.emailSubject || '',
+    emailBody: email?.emailBody || '',
   });
 
   useEffect(() => {
     console.log('Editing email with ID:', id);
-    // Optionally, fetch the email data using the ID if it wasn't passed via `location.state`
   }, [id]);
 
   const handleInputChange = (e) => {
@@ -29,11 +29,21 @@ const Edit = () => {
     setEditedEmail((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
-    alert('Draft updated!');
-    // Add logic for saving the edited email (e.g., API call or state update)
-    navigate('/drafts'); // Redirect back to drafts after saving
+  const handleSave = async () => {
+    const updatedEmail = {
+      emailFrom: editedEmail.emailFrom,
+      emailSubject: editedEmail.emailSubject,
+      emailBody: editedEmail.emailBody,
+    };
+  
+    // Call updateEmail from props to update the email in App.jsx state
+    props.updateEmail(id, updatedEmail);  // Make sure this is being called correctly!
+  
+    console.log('Email saved:', updatedEmail);
+    alert('Email updated!');
+    navigate('/');  // Navigate back to the inbox (or home page)
   };
+  
 
   const handleCancel = () => {
     navigate('/drafts'); // Redirect back to drafts without saving
@@ -87,6 +97,7 @@ const Edit = () => {
               <input
                 type="email"
                 className="email-input"
+                name="emailFrom"
                 value={user?.username || ''}
                 readOnly
               />
@@ -96,8 +107,8 @@ const Edit = () => {
               <input
                 type="text"
                 className="email-input"
-                name="subject"
-                value={editedEmail.subject}
+                name="emailSubject"
+                value={editedEmail.emailSubject}
                 onChange={handleInputChange}
                 placeholder="Email subject"
                 required
@@ -107,8 +118,8 @@ const Edit = () => {
               <strong>Message:</strong>
               <textarea
                 className="email-textarea"
-                name="body"
-                value={editedEmail.body}
+                name="emailBody"
+                value={editedEmail.emailBody}
                 onChange={handleInputChange}
                 placeholder="Write your message here"
                 rows="6"

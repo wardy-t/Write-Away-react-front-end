@@ -38,6 +38,27 @@ const create = async (emailDetails) => {
   }
 };
 
+const updateEmail = async (id, updatedEmail) => {
+  try {
+    const response = await fetch(`${BASE_URL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedEmail),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update email');
+    }
+    return await response.json(); // Return the updated email if needed
+  } catch (error) {
+    console.error('Error updating email:', error);
+    throw error; // Rethrow the error to handle it later
+  }
+};
+
 const deleteEmail = async (_id) => {
   try {
     // Make the API call to delete the reply
@@ -64,4 +85,4 @@ const deleteEmail = async (_id) => {
   }
 };
 
-export { index, create, deleteEmail };
+export { index, create, deleteEmail, updateEmail };

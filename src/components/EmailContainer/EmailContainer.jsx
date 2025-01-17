@@ -20,6 +20,15 @@ const EmailContainer = ({ handleSignout, emails, handleDeleteEmail }) => {
     }
   };
 
+  const handleEdit = () => {
+    if (selectedEmail) {
+      console.log('Navigating with selected email:', selectedEmail); // Log the selected email data
+      navigate('/edit', { state: { email: selectedEmail } });
+    } else {
+      console.error('No email selected for editing!');
+    }
+  };
+
   const handleDelete = (_id) => {
     handleDeleteEmail(_id)
   };
@@ -78,10 +87,12 @@ const EmailContainer = ({ handleSignout, emails, handleDeleteEmail }) => {
                   Reply
                 </button>
               )}
-              <button
-              className="reply-button"
-              onClick={() => navigate(`/${selectedEmail._id}`)}
-              >Edit</button>
+                <button
+                className="reply-button"
+                onClick={handleEdit} // Use handleEdit directly
+                >
+                Edit
+              </button>
               <button 
               className='reply-button' 
               onClick={() => {

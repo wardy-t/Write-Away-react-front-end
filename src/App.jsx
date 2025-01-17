@@ -36,6 +36,13 @@ const App = () => {
     navigate('/');
   };
 
+  const updateEmail = (id, updatedEmail) => {
+    setEmails(prevEmails => prevEmails.map(email =>
+      email._id === id ? { ...email, ...updatedEmail } : email
+    ));
+  };
+
+
   const handleDeleteEmail = async (emailId) => {
     console.log("Deleting email with ID:", emailId);   
     try {
@@ -95,6 +102,7 @@ const App = () => {
       setUser(null);
     };
 
+
   return (
     <>
       <AuthedUserContext.Provider value={user}>
@@ -137,7 +145,7 @@ const App = () => {
                   {/* Route for Email */}
                   <Route path="/email" element={<Email handleSendEmail={handleSendEmail}/>} />
                   <Route path="/reply" element={<Reply handleSendReply={handleSendReply}/>} />
-                  <Route path="/:id" element={<Edit />} />
+                  <Route path="/:id" element={<Edit updateEmail={updateEmail}/>} />
                 </>
               )}
             </>

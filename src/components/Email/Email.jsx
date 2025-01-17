@@ -46,7 +46,7 @@ const Email = (props, handleSignout) => {
             alt="Search Icon"
             className="search-icon"
           />
-          <span className="search-text">Compose Email</span>
+          <span className="search-text">Search emails...</span>
         </div>
       </div>
 
