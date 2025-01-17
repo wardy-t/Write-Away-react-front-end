@@ -36,11 +36,25 @@ const App = () => {
     navigate('/');
   };
 
-  const updateEmail = (id, updatedEmail) => {
-    setEmails(prevEmails => prevEmails.map(email =>
-      email._id === id ? { ...email, ...updatedEmail } : email
-    ));
-  };
+
+  const updateEmail = async (_id, updatedEmail) => {
+    try {
+        // First, update the email in the database
+      await emailService.updateEmail(_id, updatedEmail);
+        
+        // After a successful response, update the email in the local state
+        setEmails(prevEmails => 
+          prevEmails.map(email => 
+            email._id === _id ? { ...email, ...updatedEmail } : email
+          )
+        );
+    
+        console.log('Email updated successfully!');
+      } catch (error) {
+        console.error('Error updating email:', error);
+        alert('Failed to update the email.');
+      }
+    };
 
 
   const handleDeleteEmail = async (emailId) => {
