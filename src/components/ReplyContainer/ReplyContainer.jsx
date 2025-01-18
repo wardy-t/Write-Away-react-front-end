@@ -75,17 +75,19 @@ const ReplyContainer = (props) => {
                   </p>
                   <p>{reply.replyBody}</p>
                   <div className="email-buttons">
-                  {!reply.isReplied ? (
-                    <button className='reply-button' onClick={() => handleReply(reply)}>Reply</button>    
+  {/* Show "Reply" button only if the current folder is NOT "sent" and the email is not replied */}
+                  {props.myJob !== 'sent' && !reply.isReplied ? (
+                  <button className="reply-button" onClick={() => handleReply(reply)}>Reply</button>
                   ) : (
-                    <p><em>Replied</em></p>
-                  )}
-                  {props.myJob === 'drafts' ? (
-                    <>
-                      <button className='reply-button' onClick={() => handleDelete(reply._id)}>Delete</button>
-                      
-                    </>
-                  ) : null}
+    // Show "Replied" message if the email is in drafts and already replied
+                   props.myJob !== 'sent' && <p><em>Replied</em></p>
+                    )}
+
+                    {/* Show "Delete" button for both "drafts" and "sent" folders */}
+                    {props.myJob === 'drafts' || props.myJob === 'sent' ? (
+                     <button className="reply-button" onClick={() => handleDelete(reply._id)}>Delete</button>
+                     ) : null}
+                    
                   </div>
                 </div>
               ) : null
