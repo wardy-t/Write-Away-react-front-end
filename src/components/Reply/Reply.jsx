@@ -17,7 +17,7 @@ const Reply = (props, handleSignout) => {
   const [replyDetails, setReplyDetails] = useState({
     replyTo: email ? email.author.username : '',
     replySubject: email ? email.replySubject : '',
-    replyBody: email ? `Re: ${email.replySubject}\n\n${email.replyBody}` : '',
+    replyBody: '',
     currentFolder: '',
   });
 
