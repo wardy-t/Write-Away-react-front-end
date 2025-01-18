@@ -30,6 +30,27 @@ const createReply = async (replyDetails) => {
   }
 };
 
+const updateReply = async (id, updatedReply) => {
+  try {
+    const response = await fetch(`${BASE_URL}/drafts/${id}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedReply),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update email');
+    }
+    return await response.json(); // Return the updated email if needed
+  } catch (error) {
+    console.error('Error updating email:', error);
+    throw error; // Rethrow the error to handle it later
+  }
+};
+
 const deleteReply = async (_id) => {
   try {
     // Make the API call to delete the reply
@@ -58,4 +79,4 @@ const deleteReply = async (_id) => {
 
 
 
-export { index, createReply, deleteReply };
+export { index, createReply, updateReply, deleteReply };

@@ -12,12 +12,10 @@ const Reply = (props, handleSignout) => {
   const email = location.state?.email
 
 
-
-
   const [replyDetails, setReplyDetails] = useState({
     replyTo: email ? email.author.username : '',
     replySubject: email ? email.replySubject : '',
-    replyBody: '',
+    replyBody: email ? `${email.replySubject}\n\n${email.replyBody}` : '',
     currentFolder: '',
   });
 

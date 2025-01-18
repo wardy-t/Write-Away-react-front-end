@@ -154,6 +154,7 @@ const App = () => {
                       replies={replies}
                       setReplies={setReplies}
                       myJob={'sent'}
+                      handleDeleteReply={handleDeleteReply}
                     />}
                   />
                   {/* Route for Email */}
