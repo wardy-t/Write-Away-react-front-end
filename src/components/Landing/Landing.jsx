@@ -10,9 +10,14 @@ const Landing = () => {
             className="home-button"
             onClick={() => (window.location.href = "/signin")}
           >
-            Log In
+            Log in
           </button>
-          {/* Removed Sign Up button */}
+          <button
+            className="home-button"
+            onClick={() => (window.location.href = "/signup")}
+          >
+            Sign up
+          </button>
         </div>
       </div>
     </div>
