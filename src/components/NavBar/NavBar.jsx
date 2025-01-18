@@ -1,38 +1,55 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthedUserContext } from '../../App';
 import { useContext } from 'react';
+import './NavBar.css'; // Import CSS for the NavBar
 
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
+  const navigate = useNavigate(); // Hook for navigation
+
+  // Modified handleSignout function
+  const handleSignoutClick = () => {
+    handleSignout(); // Call the original signout logic
+    navigate('/'); // Redirect to Landing page
+  };
+
   return (
     <>
       {user ? (
-        <nav>
-          <ul>
-            <li>Welcome, {user.username}</li>
-            <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="" onClick={handleSignout}>
-                Sign Out
+        <>
+          {/* Left Sidebar */}
+          <div className="left-rectangle">
+            <div className="sidebar-ellipse"></div>
+            
+            {/* Compose Button */}
+            <Link to="/email" className="compose-button">
+              Compose
+            </Link>
+  
+            {/* Menu Buttons */}
+            <div className="menu-buttons">
+              <Link to="/" className="menu-button active">
+                Inbox
               </Link>
-            </li>
-          </ul>
-        </nav>
+                  <Link to="/drafts" className="menu-button">
+                    Drafts
+                  </Link>
+                  <Link to="/sent" className="menu-button">
+                    Sent
+                  </Link>
+
+              <button className="menu-button active" onClick={handleSignoutClick}>
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </>
       ) : (
-        <nav>
-          <ul>
-            <li>
-              <Link to="/signin">Sign In</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-          </ul>
-        </nav>
+        <nav></nav> // Empty nav for unauthenticated users
       )}
     </>
   );
+  
 };
+
 export default NavBar;
