@@ -13,7 +13,7 @@ const Email = (props, handleSignout) => {
   });
 
   const handleChange = (evt) => {
-    setEmailDetails({ ...emailDetails, [evt.target.name]: evt.target.value });
+    setEmailDetails({...emailDetails,[evt.target.name]: evt.target.value });
   };
 
   const handleSend = (evt) => {
